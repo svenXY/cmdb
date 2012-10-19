@@ -1,0 +1,8 @@
+CMDB.sqlite
+
+# Use wildcards as well
+*~
+*.swp
+
+# and python compiled files
+*.pyc
