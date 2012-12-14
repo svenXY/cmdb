@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} - Alle CIs{% endblock %}
+
+{% block content %}
+<h2>Alle CIs</h2>
+<ul>
+    {% for ci in object_list %}
+    <li><a href="/ci/{{ ci.id }}/">{{ ci.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+

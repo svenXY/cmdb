@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} - {{ object.title }}{% endblock %}
+
+{% block content %}
+<h2>{{ object.name }}</h2>
+<p>Typ {{ object.type }}.</p>
+<p>Supplier {{ object.supplier }}.</p>
+<p>Status {{ object.status }}.</p>
+<p>Modell {{ object.model }}.</p>
+<p>Ma&szlig;e {{ object.dimensions }}.</p>
+<h3>Zweck</h3>
+{{ object.usage|linebreaks }}
+<h3>Comment</h3>
+{{ object.comment|linebreaks }}
+{% endblock %}

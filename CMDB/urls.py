@@ -15,4 +15,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^ci/(?P<ci_id>\d+)/$', 'cmdb.views.detail'),
+    url(r'$', 'cmdb.views.index'),
 )
