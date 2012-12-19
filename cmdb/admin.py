@@ -9,8 +9,10 @@
 # 
 ###################################################
 
-from cmdb.models import CiHardware
 from django.contrib import admin
+from .models import CiHardware, Category
 
 admin.site.register(CiHardware)
+admin.site.register(Category)
+
 

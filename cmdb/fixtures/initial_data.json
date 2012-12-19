@@ -1,0 +1,84 @@
+[
+    {
+        "pk": 1,
+        "model": "cmdb.category",
+        "fields": {
+            "description": "Ein Standalone-Server (Tower o.\u00c4.)",
+            "subcat": 1,
+            "name": "Standalone-Server",
+            "slug": "towerserver"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "cmdb.category",
+        "fields": {
+            "description": "Ein Xen Hypervisor",
+            "subcat": 2,
+            "name": "Dom0",
+            "slug": "dom0"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "cmdb.category",
+        "fields": {
+            "description": "Eine virtuelle Maschine unter Xen",
+            "subcat": 2,
+            "name": "DomU",
+            "slug": "domu"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "cmdb.category",
+        "fields": {
+            "description": "Ein Service Processor",
+            "subcat": 2,
+            "name": "ServiceProcessor",
+            "slug": "sp"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "cmdb.category",
+        "fields": {
+            "description": "Ein 19\" Server, der in ein Rack eingebaut wird",
+            "subcat": 1,
+            "name": "Rack-Server",
+            "slug": "racksrv"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "cmdb.cihardware",
+        "fields": {
+            "status": "out of order",
+            "comment": "The standard server in Ygg",
+            "create_date": "2012-12-14T15:28:15Z",
+            "name": "Sun Fire X4200 ME",
+            "usage": "for almost all purposes",
+            "is_template": true,
+            "supplier": "Oracle",
+            "model": null,
+            "type": 5,
+            "dimensions": "2u"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "cmdb.cihardware",
+        "fields": {
+            "status": "active",
+            "comment": "fnords",
+            "create_date": "2012-12-14T15:33:15Z",
+            "name": "x212",
+            "usage": "lalal",
+            "is_template": false,
+            "supplier": "Oracle",
+            "model": 1,
+            "type": 5,
+            "dimensions": "2u"
+        }
+    }
+]
