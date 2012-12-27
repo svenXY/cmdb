@@ -75,6 +75,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    '/home/svenh/PY/sys_site/lib/python2.7/site-packages/django_tables2/static',
 )
 
 # List of finder classes that know how to find static files in
@@ -118,6 +119,11 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates')
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -129,6 +135,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'django_tables2',
     'common',
     'cmdb',
     'debug_toolbar',
@@ -162,7 +169,7 @@ LOGGING = {
         },
     }
 }
-TEMPLATE_STRING_IF_INVALID = 'TEMPLATE NAME ERROR'
+#TEMPLATE_STRING_IF_INVALID = 'TEMPLATE NAME ERROR'
 INTERNAL_IPS = ('127.0.0.1',)
 
 DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False}

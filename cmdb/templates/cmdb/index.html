@@ -1,14 +1,11 @@
-{% extends "base.html" %}
-
-{% block title %}{{ block.super }} - Alle CIs{% endblock %}
-
-{% block content %}
-<h2>Alle CIs</h2>
-<ul>
-    {% for ci in object_list %}
-    <li><a href="ci/{{ ci.id }}/">{{ ci.name }}</a></li>
-    {% endfor %}
-</ul>
-{% endblock %}
-
-
+{% load staticfiles %}
+{% load render_table from django_tables2 %}
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}" />
+    </head>
+    <body>
+        {% render_table table %}
+    </body>
+</html>
