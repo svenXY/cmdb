@@ -1,22 +1,18 @@
 # Create your views here.
 
-from django.http import HttpResponse, Http404
-from django.template import Context, loader
+from django.shortcuts import render_to_response, get_object_or_404
 from cmdb.models import CiHardware
 
 
 def index(request):
         cihw = CiHardware.objects.all()
-        t = loader.get_template('cmdb/index.html')
-        c = Context({'object_list': cihw})
-        return HttpResponse(t.render(c))
+        return render_to_response('cmdb/index.html', {'object_list': cihw})
+
+def prod_index(request):
+        cihw = CiHardware.objects.filter(is_template=True)
+        return render_to_response('cmdb/index.html', {'object_list': cihw})
 
 
 def detail(request, ci_id):
-    try:
-        ci = CiHardware.objects.get(id=ci_id)
-    except CiHardware.DoesNotExist:
-        raise Http404
-    t = loader.get_template('cmdb/detail.html')
-    c = Context({'object' : ci})
-    return HttpResponse(t.render(c))
+    ci = get_object_or_404(CiHardware, pk=ci_id)
+    return render_to_response('cmdb/detail.html', {'object' : ci})
