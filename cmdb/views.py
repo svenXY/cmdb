@@ -52,6 +52,13 @@ def new_product(request, ci_id=None):
     return render_to_response('cmdb/ci_hw_form.html', {'form':form}, context_instance=RequestContext(request)) 
 
 def hw_ci_mgt(request, ci_id=None, action=None):
+    if action== 'del':
+        ci = get_object_or_404(CiHardware, pk=ci_id)
+        name = ci.name
+        ci.delete()
+        logger.info("Deleted hardware CI: %s" % name)
+        return HttpResponseRedirect('/cmdb/ci')
+
     if request.POST:
         if ci_id:
             ci_data = get_object_or_404(CiHardware, pk=ci_id)

@@ -13,18 +13,19 @@ import django_tables2 as tables
 from cmdb.models import CiHardware
 
 class CiTable(tables.Table):
-    name = tables.TemplateColumn('<a href="ci/{{record.id}}/">{{record.name}}</a>')
-    links = tables.TemplateColumn('''
-            <a href="/cmdb/ci/{{record.id}}/clone" title="clone as new">c</a> |
-            <a href="ci/{{record.id}}/edit" title="edit">e</a>''')
+    name = tables.TemplateColumn('<a href="ci/{{record.id }}/edit">{{record.name}}</a>')
+    aktion = tables.TemplateColumn('<a href="ci/{{record.id}}/del" title="remove CI" onClick="return confirm(\'Wirklich löschen?\');">d</a>')
     class Meta:
         model = CiHardware
         attrs = {"class": "paleblue"}
-        sequence = ("id", "name", "model", "status", "usage", "comment", "type", "...", "create_date", "links")
+        sequence = ("name", "model", "type", "usage", "comment", "status",
+                    "...", "comment", "create_date")
+        exclude = ('id', 'is_template' )
 
 class HwPrdTable(CiTable):
+    aktion = tables.TemplateColumn('<a href="ci/{{record.id}}/clone" title="create CI">c</a>')
     class Meta:
         attrs = {"class": "paleblue"}
-        sequence = ("id", "name", "type", "supplier", "status", "...", "create_date")
-        exclude = ( "is_template",  "usage", "comment", "model" )
+        sequence = ("name", "type", "supplier", "status", "...", "create_date")
+        exclude = ( 'id', "is_template",  "usage", "comment", "model" )
 
