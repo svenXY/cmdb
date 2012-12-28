@@ -1,10 +1,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="de">
 <head>
-    <title>Add/Change a Hardware CI</title>
+    <title>{{ action }} a Hardware CI</title>
 </head>
 <body>
-    <h1>Add or modify a CI HW</h1>
+    <h1>{{ action }} a {{ ci.model }} ({{ ci.type }})</h1>
     <form action="" method="POST">
         {% csrf_token %}
         <table>

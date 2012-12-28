@@ -27,12 +27,13 @@ class Category(models.Model):
 
 class CiBase(models.Model):
     type     = models.ForeignKey(Category, limit_choices_to = {'subcat': 1}, verbose_name=u'Kategorie')
-    name     = models.CharField(u'Name', max_length=40)
+    name     = models.CharField(u'Name', max_length=40, db_index=True,
+                                unique=True)
     supplier = models.CharField(u'Lieferant', max_length=40)
     status   = models.CharField(max_length=40)
-    comment  = models.CharField(u'Kommentar', max_length=200)
+    comment  = models.CharField(u'Kommentar', max_length=200, blank=True)
     is_template = models.BooleanField(u'Produkt?')
-    create_date = models.DateTimeField(u'CI angelegt am')
+    create_date = models.DateTimeField(u'CI angelegt am', auto_now_add=True)
 
     def __unicode__(self):
         return self.name
@@ -43,14 +44,23 @@ class CiBase(models.Model):
 class CiHardware(CiBase):
     model   = models.ForeignKey('self', limit_choices_to={'is_template':True }, blank=True, null=True, verbose_name="Produkt")
     dimensions  = models.CharField(u'Abmessung', max_length=40)
-    usage       = models.CharField(u'Zweck', max_length=80)
+    usage       = models.CharField(u'Zweck', max_length=80, blank=True)
 
     class Meta:
         verbose_name = u'Hardware CI'
         verbose_name_plural = u'Hardware CIs'
 
-class CiHardwareForm(ModelForm):
+class PrdHardwareForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(CiHardwareForm, self).__init__(*args, **kwargs)
+        instance = getattr(self, 'instance', None)
+        if instance and instance.id:
+            self.fields['is_template'].widget.attrs['disabled'] = 'disabled'
 
+    class Meta:
+        model = CiHardware
+
+class CiHardwareForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(CiHardwareForm, self).__init__(*args, **kwargs)
         instance = getattr(self, 'instance', None)
@@ -58,6 +68,7 @@ class CiHardwareForm(ModelForm):
             self.fields['model'].widget.attrs['disabled'] = 'disabled'
             self.fields['type'].widget.attrs['disabled'] = 'disabled'
             self.fields['is_template'].widget.attrs['disabled'] = 'disabled'
+            #pass
 
     class Meta:
         model = CiHardware

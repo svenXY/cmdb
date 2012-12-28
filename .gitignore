@@ -3,6 +3,7 @@ CMDB.sqlite
 # Use wildcards as well
 *~
 *.swp
+*.log
 
 # and python compiled files
 *.pyc

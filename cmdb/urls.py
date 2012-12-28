@@ -11,9 +11,10 @@
 from django.conf.urls import patterns, url
 
 urlpatterns = patterns('cmdb.views',
-        url(r'^ci/(?P<ci_id>\d+)/$', 'detail'),
-        url(r'^ci/(?P<ci_id>\d+)/edit$', 'edit_ci'),
-        url(r'^ci/(?P<ci_id>\d+)/clone$', 'new_ci'),
-        url(r'^prd$', 'prod_index'),
-        url(r'$', 'index'),
+        url(r'^ci/(?P<ci_id>\d+)$', 'hw_ci_detail'),
+        url(r'^ci/(?P<ci_id>\d+)/(?P<action>edit)$', 'hw_ci_mgt'),
+        url(r'^ci/(?P<ci_id>\d+)/(?P<action>clone)$', 'hw_ci_mgt'),
+        url(r'^prd$', 'hw_prd_index'),
+        url(r'^ci$', 'hw_ci_index'),
+        url(r'$', 'hw_ci_index'),
 )

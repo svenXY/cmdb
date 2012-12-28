@@ -5,6 +5,8 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 
 
+
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -159,13 +161,23 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
-        }
+        },
+    'file': {
+                    'level': 'DEBUG',
+                    'class': 'logging.FileHandler',
+                    'filename': os.path.join(PROJECT_PATH, 'logfile.log'),
+                },
     },
     'loggers': {
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
             'propagate': True,
+        },
+        'cmdb': {
+            'handlers': ['file'],
+            'level':'DEBUG',
+            'propagate':True,
         },
     }
 }
