@@ -1,6 +1,9 @@
 CMDB.sqlite
 django_tables2
+
+# statics that will be collected anyway:
 admin/
+css/
 
 # Use wildcards as well
 *~

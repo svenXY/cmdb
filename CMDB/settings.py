@@ -2,6 +2,7 @@
     
 import os
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+VIRTUALENV_ROOT = os.path.expanduser('~/PY')
 
 
 
@@ -77,8 +78,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/home/sven/PY/sys_site/lib/python2.7/site-packages/django_tables2/static',
-    #'/home/svenh/PY/sys_site/lib/python2.7/site-packages/django_tables2/static',
+    os.path.join(VIRTUALENV_ROOT, 'sys_site/lib/python2.7/site-packages/django_tables2/static'),
 )
 
 # List of finder classes that know how to find static files in

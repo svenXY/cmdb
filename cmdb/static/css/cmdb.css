@@ -1,4 +1,4 @@
-.foot_link { font-size:.7em; font-weight:bold;   }
+.foot_link { font-family:sans-serif; font-size:.7em; font-weight:bold;   }
 .foot_link a:link { font-weight:bold; color:grey; text-decoration:none; }
 .foot_link a:visited { font-weight:bold; color:grey; text-decoration:none; }
 .foot_link a:focus { font-weight:bold; color:red; text-decoration:underline; }
