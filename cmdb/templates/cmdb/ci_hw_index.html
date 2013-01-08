@@ -3,12 +3,16 @@
 <!doctype html>
 <html>
     <head>
+        <link rel="stylesheet" href="{% static 'css/cmdb.css'%}" />
         <link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}" />
     </head>
     <body>
         {% render_table table %}
-        <hr>
-        
-        <hr>
+        <hr noshade style="color:silver";>
+         <span class="foot_link">
+          <a href='prd' title='Produkte'>Produkte</a>&nbsp;|&nbsp;
+          <a href='ci' title='CIs'>CIs</a>&nbsp;|&nbsp;
+         </span>
+        <hr noshade style="color:silver";>
     </body>
 </html>

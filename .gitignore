@@ -1,4 +1,6 @@
 CMDB.sqlite
+django_tables2
+admin/
 
 # Use wildcards as well
 *~

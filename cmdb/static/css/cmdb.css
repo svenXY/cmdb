@@ -1,0 +1,7 @@
+.foot_link { font-size:.7em; font-weight:bold;   }
+.foot_link a:link { font-weight:bold; color:grey; text-decoration:none; }
+.foot_link a:visited { font-weight:bold; color:grey; text-decoration:none; }
+.foot_link a:focus { font-weight:bold; color:red; text-decoration:underline; }
+.foot_link a:hover { font-weight:bold; color:blue; text-decoration:none; }
+.foot_link a:active { font-weight:bold; color:lime; text-decoration:underline; }
+

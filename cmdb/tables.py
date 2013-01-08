@@ -18,7 +18,7 @@ class CiTable(tables.Table):
     class Meta:
         model = CiHardware
         attrs = {"class": "paleblue"}
-        sequence = ("name", "model", "type", "usage", "comment", "status",
+        sequence = ("name", "usage", "status", "model", "type", "comment", 
                     "...", "comment", "create_date")
         exclude = ('id', 'is_template' )
 
