@@ -14,12 +14,12 @@ logger = logging.getLogger(__name__)
 
 
 def hw_ci_index(request):
-    table = CiTable(CiHardware.objects.filter(is_template=False))
+    table = CiTable(CiHardware.objects.exclude(model__id=None))
     RequestConfig(request, paginate={"per_page":25}).configure(table)
     return render(request, 'cmdb/ci_hw_index.html', {'table': table})
 
 def hw_prd_index(request):
-    table = HwPrdTable(CiHardware.objects.filter(is_template=True))
+    table = HwPrdTable(CiHardware.objects.filter(model_id=None))
     RequestConfig(request, paginate={"per_page":25}).configure(table)
     return render(request, 'cmdb/ci_hw_index.html', {'table': table})
 
@@ -37,14 +37,13 @@ def new_product(request, ci_id=None):
             form = CiHardwareForm(data=request.POST)
         if form.is_valid():
             ci_clone = form.save(commit=False)
-            ci_clone.is_template=True
+            ci_clone.model=None
             ci_clone.save()
         return HttpResponseRedirect('/cmdb/ci/%s' % ci_clone.id)
     else:
         if ci_id:
             ci_data = get_object_or_404(CiHardware, pk=ci_id)
-            ci_data.model = None
-            ci_data.is_template = True
+            ci_clone.model=None
             form =  CiHardwareForm(instance=ci_data)
         else:
             form =  CiHardwareForm()
@@ -68,7 +67,6 @@ def hw_ci_mgt(request, ci_id=None, action=None):
                 POST['model'] = ci_id
             else:
                 POST['model'] = ci_data.model_id
-                POST['is_template'] = ci_data.is_template
             form = CiHardwareForm(instance=ci_data, data=POST)
         else:
             logger.warn("CI ID is empty")
@@ -92,7 +90,6 @@ def hw_ci_mgt(request, ci_id=None, action=None):
                 ci_data.status = ''
                 ci_data.comment = ''
                 ci_data.usage = ''
-                ci_data.is_template = False
             elif action == 'edit':
                 ci_data = ci_orig
             form =  CiHardwareForm(instance=ci_data)

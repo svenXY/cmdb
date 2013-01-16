@@ -10,6 +10,11 @@
         <table>
             {{ form.as_table }}
         </table>
+    <ul id="prd_data">
+          {% for hidden in form.hidden_fields %}
+      <li>{{ hidden.label }} {{ hidden.value }}
+                  {% endfor %}
+    </ul>
         <p><input type="submit" value="Save"></p>
     </form>
 </body>
