@@ -18,5 +18,5 @@ urlpatterns = patterns('cmdb.views',
         url(r'^ci/(?P<ci_id>\d+)/(?P<action>del)$', 'hw_ci_mgt'),
         url(r'^prd$', 'hw_prd_index'),
         url(r'^ci$', 'hw_ci_index'),
-        url(r'$', 'hw_ci_index'),
+                       #url(r'$', 'hw_ci_index'),
 )

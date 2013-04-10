@@ -1,22 +1,23 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+{% load fieldnames %}
 <html lang="de">
 <head>
     <title>{{ action }} a Hardware CI</title>
 </head>
 <body>
-    <h1>{{ action }} a {{ ci.model }} ({{ ci.type }})</h1>
+    <h1>{{ action }} a {{ prd.model }} ({{ prd.type }})</h1>
     <form action="" method="POST">
         {% csrf_token %}
         <table>
             {{ form.as_table }}
         </table>
-    <ul id="prd_data">
-          {% for hidden in form.hidden_fields %}
-      <li>{{ hidden.label }} {{ hidden.value }}
-                  {% endfor %}
-    </ul>
-        <p><input type="submit" value="Save"></p>
+        <p><input type="submit" value="Speichern"></p>
     </form>
+{% block content %}
+{%for field in prd_fields %}
+  <p>{{ prd|value_with_field:field }}</p>
+{%endfor %}
+{% endblock %}
 </body>
 </html>
 

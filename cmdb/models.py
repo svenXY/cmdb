@@ -42,7 +42,7 @@ class CiBase(models.Model):
       abstract = True
 
 class CiHardware(CiBase):
-    model   = models.ForeignKey('self', limit_choices_to={'model__name':'__PRODUCT__' }, blank=True, null=True, verbose_name="Produkt")
+    model   = models.ForeignKey('self', limit_choices_to={'model__name':None }, blank=True, null=True, verbose_name="Produkt")
     dimensions  = models.CharField(u'Abmessung', max_length=40)
     usage       = models.CharField(u'Zweck', max_length=80, blank=True)
 
@@ -60,8 +60,8 @@ class CiHardwareForm(ModelForm):
         model = CiHardware
         exclude = { 'date_created', }
         widgets = { 
-            'model' : HiddenInput,
             'type' : HiddenInput,
+            'model' : HiddenInput,
             'dimensions' : HiddenInput,
             'vendor' : HiddenInput
         }
