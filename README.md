@@ -1,4 +1,4 @@
 cmdb
 ====
 
-[pre-alpha] Will host a django web application for a CMDB database
+This will almost cetainly never become something usable. I curretly prefer to do something with "verbosy".
